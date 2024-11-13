@@ -1,5 +1,3 @@
-
-
 name: Python Package 
 
 on : 
@@ -38,8 +36,8 @@ jobs:
         pytest
         
   buildDockerImageandPush:
-     runs-on: 
-     needs: build 
+     runs-on: ubuntu-latest
+     needs: [build] 
      steps: 
 
         - name: Set up QEMU
@@ -51,8 +49,8 @@ jobs:
         - name: login to dockerhub
           uses: docker/login-action@v3
           with: 
-             username: ${{ secrets.Dockerusername }}
-             password: ${{ secrets.Dockerpassword }}
+             username: ${{ secrets.DockerUsername }}
+             password: ${{ secrets.DockerPassword }}
 
         - name: Build and push the image 
           uses: docker/build-push-action@v5
