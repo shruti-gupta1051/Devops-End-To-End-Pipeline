@@ -2,24 +2,9 @@
 
 This repository contains an advanced end-to-end DevOps project that integrates various tools such as Git, Docker, Kubernetes, Helm, GitHub Actions, Jenkins, Terraform, Ansible, Prometheus, Grafana, AWS, and Shell scripts. The project sets up a continuous integration and deployment pipeline.
 
-## Architecture Diagram
-
-![ArchitectureDiagram](Screenshots/Architecture.png)
-
-## WebApp Overview
-
-- We are going to deploy below game app on the K8s cluster.
-![Snake Game Webapp](Screenshots/webapp.png)
-
-My recorded session for this project is uploaded on GeeksForGeeks - https://www.geeksforgeeks.org/batch/devops-22?tab=Live
-
 ## Project Overview
 
-### Step 1: Fork and Customize Repository
-
-- Fork this repository and make any customizations if needed.
-
-### Step 2: Set Up Jenkins Server on AWS EC2 Instance
+### Step 1: Set Up Jenkins Server on AWS EC2 Instance
 
 - Create an EC2 instance on AWS with security group rules allowing ports 8080 and 50000.
 - Install Docker on the instance.
@@ -28,7 +13,7 @@ My recorded session for this project is uploaded on GeeksForGeeks - https://www.
   docker run -d -v jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 --restart=on-failure jenkins/jenkins:lts-jdk17
 - Access Jenkins at http://<your-instance-ip>:8080, configure Jenkins, and install suggested plugins.
 
-### Step 3: Configure Jenkins Worker Node
+### Step 2: Configure Jenkins Worker Node
 - Launch a second EC2 instance and configure it as a Jenkins worker node using the steps in the `JenkinsSlaveEc2Node` file.
 
 ### Step 4: Create Jenkins Pipeline
