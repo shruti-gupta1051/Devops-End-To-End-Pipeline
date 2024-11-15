@@ -5,8 +5,7 @@ on :
        branches:
            - [ "main" ]
    Pull request:
-       branches: 
-           - [ "main" ]
+       types: [opened, synchronised, reopened]
 jobs: 
   build: 
     runs-on: ubuntu-latest
