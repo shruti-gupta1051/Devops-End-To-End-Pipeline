@@ -6,6 +6,7 @@ class FlaskAppTests(unittest.TestCase):
     def setUpClass(cls):
         cls.client = app.test_client()
         cls.client.testing = True
+        print("hello"
 
     def test_index_page(self):
         response = self.client.get('/')
