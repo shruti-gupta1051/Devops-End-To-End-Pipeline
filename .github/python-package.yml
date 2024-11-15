@@ -4,7 +4,7 @@ on :
    push:
        branches:
            - [ "main" ]
-   Pull request:
+   pull request:
        types: [opened, synchronised, reopened]
 jobs: 
   build: 
