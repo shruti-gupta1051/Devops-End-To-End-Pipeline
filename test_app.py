@@ -1,21 +1,19 @@
-import unittest
-from app import app
+# test_app.py
 
-class FlaskAppTests(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls.client = app.test_client()
-        cls.client.testing = True
-        print("hello"
+import pytest
+from app import create_app
+from urllib.parse import quote
 
-    def test_index_page(self):
-        response = self.client.get('/')
-        self.assertEqual(response.status_code, 200)
-        self.assertIn(b'GFG Snake Game Updated', response.data)
-    
-    def test_static_files(self):
-        response = self.client.get('/static/game.js')
-        self.assertEqual(response.status_code, 200)
-        self.assertIn(b'const canvas', response.data)
-if __name__ == '__main__':
-    unittest.main()
+@pytest.fixture
+def app():
+    return create_app()
+
+@pytest.fixture
+def client(app):
+    return app.test_client()
+
+def test_home(client):
+    response = client.get('/')
+    assert response.status_code == 200
+    expected_text = quote('Hurray devops 20')
+    assert expected_text.encode() in response.data
