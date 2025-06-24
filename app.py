@@ -1,10 +1,17 @@
-from flask import Flask, render_template
+# app.py
 
-app = Flask(__name__)
+from flask import Flask 
+from urllib.parse import quote 
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+def create_app():
+    app = Flask(__name__)
+
+    @app.route('/')
+    def home():
+        return quote('Hurray devops 20')
+
+    return app
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app = create_app()
+    app.run(host='0.0.0.0', port=80, debug=True)
